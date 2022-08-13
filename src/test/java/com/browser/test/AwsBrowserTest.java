@@ -19,20 +19,22 @@ import software.amazon.awssdk.services.devicefarm.model.CreateTestGridUrlRespons
 import java.io.File;
 import java.io.FileInputStream;
 import java.net.URL;
+import java.time.Duration;
 import java.util.Properties;
 
 public class AwsBrowserTest {
 
     private static String BROWSER_CHROME = "chrome";
     private static String BROWSER_FIREFOX = "firefox";
-    private static String BROWSER_IE = "iexplore";
+
 
     private Properties fileprops = new Properties();
     private static RemoteWebDriver driver;
-    private static DesiredCapabilities desired_capabilities;
+    DesiredCapabilities desired_capabilities = new DesiredCapabilities();
 
-    @Parameters({"browser"})
+
     @BeforeTest
+    @Parameters({"browser"})
     public void setUp(String browser) throws Exception {
         URL testGridUrl = null;
 
@@ -62,7 +64,7 @@ public class AwsBrowserTest {
         WebElement inputSearch = driver.findElement(By.xpath("//input[@name='q']"));
         inputSearch.sendKeys("AWS Device Farm");
         inputSearch.sendKeys(Keys.ENTER);
-        WebDriverWait wait = new WebDriverWait(driver, 10);
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(10000));
         wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[@id='result-stats']")));
         WebElement results = driver.findElement(By.xpath("//div[@id='result-stats']"));
         Assert.assertTrue(results.isDisplayed());
@@ -84,11 +86,10 @@ public class AwsBrowserTest {
         System.out.println("****************************************");
 
         if (browser.equalsIgnoreCase(BROWSER_CHROME)) {
-            desired_capabilities = DesiredCapabilities.chrome();
+            desired_capabilities.setCapability("browserName",BROWSER_CHROME);
         } else if (browser.equalsIgnoreCase(BROWSER_FIREFOX)) {
-            desired_capabilities = DesiredCapabilities.firefox();
-        } else {
-            desired_capabilities = DesiredCapabilities.internetExplorer();
+            desired_capabilities.setCapability("browserName",BROWSER_FIREFOX);
+
         }
     }
 }

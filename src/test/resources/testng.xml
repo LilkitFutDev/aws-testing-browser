@@ -3,6 +3,7 @@
 <suite name="AWS Browser Test Suite" parallel="tests" thread-count="1">
     <test name="Chrome Test">
         <parameter name="browser" value="chrome" />
+        <parameter name="url" value="https://www.google.com"/>
         <classes>
             <class name="com.browser.test.AwsBrowserTest"/>
         </classes>
