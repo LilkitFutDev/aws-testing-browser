@@ -22,7 +22,7 @@ jobs:
         path: './src/test/resources/awsbrowser.properties'
         property: |
          'aws-access-key'
-         'the.key.of.the.second.property'
+         'aws-secret-access-key'
         value: |
          'x'
          'second value'
