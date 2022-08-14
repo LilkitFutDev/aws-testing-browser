@@ -12,14 +12,19 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.Test;
+import org.yaml.snakeyaml.Yaml;
 import software.amazon.awssdk.regions.Region;
 import software.amazon.awssdk.services.devicefarm.DeviceFarmClient;
 import software.amazon.awssdk.services.devicefarm.model.CreateTestGridUrlRequest;
 import software.amazon.awssdk.services.devicefarm.model.CreateTestGridUrlResponse;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.InputStream;
 import java.net.URL;
 import java.time.Duration;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
 import java.util.Properties;
 
 public class AwsBrowserTest {
@@ -28,9 +33,10 @@ public class AwsBrowserTest {
     private static String BROWSER_FIREFOX = "firefox";
 
 
-    private Properties fileprops = new Properties();
     private static RemoteWebDriver driver;
     DesiredCapabilities desired_capabilities = new DesiredCapabilities();
+
+    Map<String, String> data = new HashMap<String, String>();
 
 
     @BeforeTest
@@ -38,13 +44,14 @@ public class AwsBrowserTest {
     public void setUp(String browser) throws Exception {
         URL testGridUrl = null;
 
-        System.setProperty("aws.accessKeyId", getProperties().getProperty("aws-access-key"));
-        System.setProperty("aws.secretAccessKey", getProperties().getProperty("aws-secret-access-key"));
+
+        System.setProperty("aws.accessKeyId", getProperties().get("aws_access_key"));
+        System.setProperty("aws.secretAccessKey", getProperties().get("aws_secret_access_key"));
 
         DeviceFarmClient client = DeviceFarmClient.builder().region(Region.US_WEST_2).build();
         CreateTestGridUrlRequest request = CreateTestGridUrlRequest.builder()
                 .expiresInSeconds(300)
-                .projectArn(getProperties().getProperty("aws-project-arn"))
+                .projectArn(getProperties().get("project_arn"))
                 .build();
 
         try {
@@ -60,6 +67,7 @@ public class AwsBrowserTest {
 
     @Test
     public void searchGoogle() {
+
         driver.get("https://www.google.com/");
         WebElement inputSearch = driver.findElement(By.xpath("//input[@name='q']"));
         inputSearch.sendKeys("AWS Device Farm");
@@ -75,9 +83,14 @@ public class AwsBrowserTest {
         driver.quit();
     }
 
-    private Properties getProperties() throws Exception {
-        fileprops.load(new FileInputStream(new File("src/test/resources/awsbrowser.properties").getAbsolutePath()));
-        return fileprops;
+    private Map<String, String> getProperties() throws Exception {
+
+        InputStream inputStream = new FileInputStream(new File("src\\test\\resources\\action.yml"));
+
+        Yaml yaml = new Yaml();
+        data = yaml.load(inputStream);
+        return data;
+
     }
 
     private void getCapabilities(String browser) {

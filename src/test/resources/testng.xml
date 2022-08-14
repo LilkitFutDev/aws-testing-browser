@@ -14,10 +14,5 @@
             <class name="com.browser.test.AwsBrowserTest"/>
         </classes>
     </test>
-    <test name="Internet Explorer Test">
-        <parameter name="browser" value="iexplore" />
-        <classes>
-            <class name="com.browser.test.AwsBrowserTest"/>
-        </classes>
-    </test>
+
 </suite>

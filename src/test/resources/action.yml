@@ -1,0 +1,16 @@
+name: 'Start a test_run on desktop'
+description: 'Start a testrun on desktop'
+inputs:
+  project_arn:
+    description: 'x'
+    required: true
+  aws_access_key:
+    description: 'x'
+    required: true
+  aws_secret_access_key:
+    description: 'x'
+    required: true
+
+runs:
+  using: 'node12'
+  main: 'AwsBrowserTest'
