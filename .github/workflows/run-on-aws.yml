@@ -24,7 +24,7 @@ jobs:
         aws-region: us-west-2
 
     - name: Run
-      uses: LilkitFutDev/aws-testing-browser/src/test/resources@master
+      uses: LilkitFutDev/aws-testing-browser/src/test/java/com/browser/test@master
       with:
         name: run_desktop
         project_arn: ${{ secrets.AWS_PROJECT_ARN }}
