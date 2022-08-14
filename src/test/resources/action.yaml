@@ -12,5 +12,9 @@ inputs:
     required: true
 
 runs:
-  using: "node12"
-  main: 'testng.xml'
+  using: composite
+
+  steps:
+    - shell: cmd
+      run : "testng.xml"
+
