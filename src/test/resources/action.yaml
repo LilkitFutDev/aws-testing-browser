@@ -16,7 +16,6 @@ runs:
 
   steps:
     - shell: cmd
-      run : 'cd '
-    - shell: cmd
-      run: 'mvn test'
+      run : 'mvn clean test -DsuiteXmlFile=testng.xml'
+
 
