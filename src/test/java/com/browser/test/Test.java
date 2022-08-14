@@ -16,7 +16,7 @@ public class Test {
     }
 
     public void test() throws FileNotFoundException {
-        InputStream inputStream = new FileInputStream(new File("src\\test\\resources\\action.yml"));
+        InputStream inputStream = new FileInputStream(new File("src\\test\\resources\\action.yaml"));
 
         Yaml yaml = new Yaml();
         Map<String, Object> data = yaml.load(inputStream);
