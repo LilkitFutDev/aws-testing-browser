@@ -12,5 +12,5 @@ inputs:
     required: true
 
 runs:
-  using: 'node12'
+  using: 'docker'
   main: 'AwsBrowserTest.java'
