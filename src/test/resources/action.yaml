@@ -16,7 +16,7 @@ runs:
 
   steps:
     - shell: cmd
-      run : 'cd C:\Users\Администратор\aws-testing-browser'
+      run : 'cd '
     - shell: cmd
       run: 'mvn test'
 
