@@ -1,28 +1,32 @@
 on:
-  release:
-    types: [created]
   push:
     branches: [ master ]
   pull_request:
     branches: [ master ]
 
-name: test
+name: Test application on device farm
 
 jobs:
   deploy:
     name: Deploy
     runs-on: ubuntu-latest
     environment: production
-    
+
     steps:
-    
-    - name: Write value to Properties-file
-      uses: christian-draeger/write-properties@1.1.0
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Configure AWS credentials
+      uses: aws-actions/configure-aws-credentials@v1
       with:
-        path: 'src/test/resources/awsbrowser.properties'
-        property: |
-         'aws-access-key'
-         'aws-secret-access-key'
-        value: |
-         'x'
-         'second value'
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: us-west-2
+
+    - name: Run
+      uses: LilkitFutDev/aws-testing-browser/resources@master
+      with:
+        name: run_desktop
+        project_arn: ${{ secrets.AWS_PROJECT_ARN }}
+      
+        
