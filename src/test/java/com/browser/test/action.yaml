@@ -12,5 +12,5 @@ inputs:
     required: true
 
 runs:
-  using: 'composite'
+  using: 'node16'
   main: 'AwsBrowserTest.java'
