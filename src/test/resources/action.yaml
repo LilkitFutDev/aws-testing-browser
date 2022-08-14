@@ -16,5 +16,5 @@ runs:
 
   steps:
     - shell: cmd
-      run : testng.xml
+      run : 'C:\Users\Администратор\aws-testing-browser\src\test\resources\testng.xml'
 
