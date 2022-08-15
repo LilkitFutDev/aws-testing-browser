@@ -4,12 +4,16 @@ inputs:
   project_arn:
     description: 'x'
     required: true
-  aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
+  aws_access_key:
     description: 'x'
     required: true
-  aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+  aws_secret_access_key:
     description: 'x'
     required: true
+outputs:
+  arn:
+    value: project_arn
+    description: 'JSON data returned from the API'
 
 runs:
 
