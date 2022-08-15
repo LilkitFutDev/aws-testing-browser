@@ -41,7 +41,7 @@ public class AwsBrowserTest {
     DesiredCapabilities desired_capabilities = new DesiredCapabilities();
 
     Map<String, String> data = new HashMap<String, String>();
-    InputStream inputStream = new FileInputStream(new File("src\\test\\java\\com\\browser\\test\\action.yml"));
+    InputStream inputStream = new FileInputStream(new File("src\\test\\resources\\action.yml"));
 
     public AwsBrowserTest() throws FileNotFoundException {
     }
@@ -55,7 +55,7 @@ public class AwsBrowserTest {
         DeviceFarmClient client = DeviceFarmClient.builder().region(Region.US_WEST_2).build();
         CreateTestGridUrlRequest request = CreateTestGridUrlRequest.builder()
                 .expiresInSeconds(300)
-                .projectArn(getProperties().get("project_arn"))
+                .projectArn(getProperties().get("inputs.project_arn"))
                 .build();
 
         try {
