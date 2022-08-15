@@ -4,10 +4,10 @@ inputs:
   project_arn:
     description: 'x'
     required: true
-  aws_access_key:
+  aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
     description: 'x'
     required: true
-  aws_secret_access_key:
+  aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
     description: 'x'
     required: true
 
