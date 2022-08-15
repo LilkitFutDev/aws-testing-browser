@@ -17,6 +17,8 @@ import software.amazon.awssdk.regions.Region;
 import software.amazon.awssdk.services.devicefarm.DeviceFarmClient;
 import software.amazon.awssdk.services.devicefarm.model.CreateTestGridUrlRequest;
 import software.amazon.awssdk.services.devicefarm.model.CreateTestGridUrlResponse;
+
+import software.amazon.awssdk.arns.ArnResource.DefaultBuilder;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
@@ -45,8 +47,8 @@ public class AwsBrowserTest {
         URL testGridUrl = null;
 
 
-        System.setProperty("aws.accessKeyId", getProperties().get("aws_access_key"));
-        System.setProperty("aws.secretAccessKey", getProperties().get("aws_secret_access_key"));
+//        System.setProperty("aws.accessKeyId", getProperties().get("aws_access_key"));
+//        System.setProperty("aws.secretAccessKey", getProperties().get("aws_secret_access_key"));
 
         DeviceFarmClient client = DeviceFarmClient.builder().region(Region.US_WEST_2).build();
         CreateTestGridUrlRequest request = CreateTestGridUrlRequest.builder()
