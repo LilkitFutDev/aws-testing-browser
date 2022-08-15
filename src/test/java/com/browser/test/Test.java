@@ -6,22 +6,33 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
+import java.util.HashMap;
 import java.util.Map;
 
 public class Test {
 
-    public static void main(String[] args) throws FileNotFoundException {
+    Map<String, String> data = new HashMap<String, String>();
+
+    public static void main(String[] args) throws Exception {
          Test test = new Test();
          test.test();
     }
 
-    public void test() throws FileNotFoundException {
+    public void test() throws Exception {
+        System.out.println(System.setProperty("aws.accessKeyId", getProperties().get("aws_access_key")));
+
+    }
+
+    private Map<String, String> getProperties() throws Exception {
+
         InputStream inputStream = new FileInputStream(new File("src\\test\\resources\\action.yaml"));
 
         Yaml yaml = new Yaml();
-        Map<String, Object> data = yaml.load(inputStream);
-        data.put("project_arn", "1");
-        System.out.println(data.get("aws_access_key"));
+        data = yaml.load(inputStream);
+        System.out.println(System.setProperty("aws.accessKeyId", getProperties().get("aws_access_key")));
+
+        return data;
+
     }
 
 }
