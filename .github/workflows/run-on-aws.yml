@@ -26,7 +26,6 @@ jobs:
     - name: Run
       uses: LilkitFutDev/aws-testing-browser/src/test/resources@master
       with:
-        name: run_desktop
         aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         project_arn: ${{ secrets.AWS_PROJECT_ARN }}
