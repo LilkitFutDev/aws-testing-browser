@@ -9,7 +9,7 @@ name: Test application on device farm
 jobs:
   deploy:
     name: Deploy
-    runs-on: windows
+    runs-on: windows-latest
     environment: production
 
     steps:
