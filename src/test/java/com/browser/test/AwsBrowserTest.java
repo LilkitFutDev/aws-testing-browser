@@ -46,8 +46,10 @@ public class AwsBrowserTest {
     public void setUp(String browser) throws Exception {
         URL testGridUrl = null;
 
-        System.setProperty("aws.accessKeyId", getProperties().get("aws_access_key"));
-        System.setProperty("aws.secretAccessKey", getProperties().get("aws_secret_access_key"));
+//        System.setProperty("aws.accessKeyId", getProperties().get("aws_access_key"));
+//        System.setProperty("aws.secretAccessKey", getProperties().get("aws_secret_access_key"));
+
+        System.out.println(getProperties().get("project_arn"));
 
         DeviceFarmClient client = DeviceFarmClient.builder().region(Region.US_WEST_2).build();
         CreateTestGridUrlRequest request = CreateTestGridUrlRequest.builder()
