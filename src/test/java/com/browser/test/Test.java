@@ -19,17 +19,19 @@ public class Test {
     }
 
     public void test() throws Exception {
-        System.out.println(System.setProperty("aws.accessKeyId", getProperties().get("aws_access_key")));
+        System.out.println(getProperties());
 
     }
 
     private Map<String, String> getProperties() throws Exception {
 
-        InputStream inputStream = new FileInputStream(new File("src\\test\\resources\\action.yaml"));
+        InputStream inputStream = new FileInputStream(new File("src\\test\\resources\\action.yml"));
 
         Yaml yaml = new Yaml();
         data = yaml.load(inputStream);
-        System.out.println(System.setProperty("aws.accessKeyId", getProperties().get("aws_access_key")));
+        data.put("aws_access_key", data.get("aws_access_key"));
+        data.put("project_arn", data.get("project_arn"));
+        data.put("aws_secret_access_key", data.get("aws_secret_access_key"));
 
         return data;
 
