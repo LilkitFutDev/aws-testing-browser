@@ -90,8 +90,6 @@ public class AwsBrowserTest {
 
     private Map<String, String> getProperties() throws Exception {
 
-
-
         Yaml yaml = new Yaml();
         data = yaml.load(inputStream);
 
