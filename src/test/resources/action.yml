@@ -4,12 +4,15 @@ inputs:
   project_arn:
     description: 'x'
     required: true
+    default: ${{ secrets.AWS_PROJECT_ARN }}
   aws_access_key:
     description: 'x'
     required: true
+    default: ${{ secrets.AWS_ACCESS_KEY_ID }}
   aws_secret_access_key:
     description: 'x'
     required: true
+    default: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 outputs:
     data:
       value: aws_access_key
