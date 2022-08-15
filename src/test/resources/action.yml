@@ -11,9 +11,9 @@ inputs:
     description: 'x'
     required: true
 outputs:
-  arn:
-    value: project_arn
-    description: 'JSON data returned from the API'
+    data:
+      value: aws_access_key
+      description: 'JSON data returned from the API'
 
 runs:
 
@@ -22,7 +22,7 @@ runs:
   steps:
     -  shell: cmd
        run: dir
-    - shell: cmd
-      run : mvn clean test -DsuiteXmlFile=testng.xml
+    -  shell: cmd
+       run : mvn clean test -DsuiteXmlFile=testng.xml
 
 

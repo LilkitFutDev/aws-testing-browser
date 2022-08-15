@@ -91,9 +91,6 @@ public class AwsBrowserTest {
         Yaml yaml = new Yaml();
         data = yaml.load(inputStream);
 
-        data.put("aws_access_key", data.get("aws_access_key"));
-        data.put("project_arn", data.get("project_arn"));
-        data.put("aws_secret_access_key", data.get("aws_secret_access_key"));
 
         return data;
 
