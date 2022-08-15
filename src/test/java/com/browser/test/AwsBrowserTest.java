@@ -86,11 +86,10 @@ public class AwsBrowserTest {
 
     private Map<String, String> getProperties() throws Exception {
 
-        InputStream inputStream = new FileInputStream(new File("src\\test\\resources\\action.yml"));
+        InputStream inputStream = new FileInputStream(new File("src\\test\\java\\com\\browser\\test\\action.yml"));
 
         Yaml yaml = new Yaml();
         data = yaml.load(inputStream);
-
 
         return data;
 

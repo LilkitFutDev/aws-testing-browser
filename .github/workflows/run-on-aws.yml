@@ -24,7 +24,7 @@ jobs:
 #        aws-region: us-west-2
 
     - name: Run
-      uses: LilkitFutDev/aws-testing-browser/src/test/resources@master
+      uses: LilkitFutDev/aws-testing-browser/src/test/java/com/browser/test@master
       with:
         aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}

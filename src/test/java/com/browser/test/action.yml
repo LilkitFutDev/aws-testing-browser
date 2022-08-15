@@ -26,6 +26,6 @@ runs:
     -  shell: cmd
        run: dir
     -  shell: cmd
-       run : mvn clean test -DsuiteXmlFile=testng.xml
+       run : mvn clean test -DsuiteXmlFile=AwsBrowserTest
 
 
