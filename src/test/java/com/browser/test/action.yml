@@ -8,7 +8,7 @@ inputs:
 
 outputs:
     data:
-      value: aws_access_key
+      value: project_arn
       description: 'JSON data returned from the API'
 
 runs:
@@ -16,6 +16,7 @@ runs:
   using: composite
 
   steps:
+
     -  shell: cmd
        run: dir
     -  shell: cmd

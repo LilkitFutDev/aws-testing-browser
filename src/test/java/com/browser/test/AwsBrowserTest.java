@@ -36,6 +36,7 @@ public class AwsBrowserTest {
     private static String BROWSER_FIREFOX = "firefox";
 
 
+
     private static RemoteWebDriver driver;
     DesiredCapabilities desired_capabilities = new DesiredCapabilities();
 
@@ -51,12 +52,10 @@ public class AwsBrowserTest {
     public void setUp(String browser) throws Exception {
         URL testGridUrl = null;
 
-        System.out.println(getProperties().get("project_arn"));
-
         DeviceFarmClient client = DeviceFarmClient.builder().region(Region.US_WEST_2).build();
         CreateTestGridUrlRequest request = CreateTestGridUrlRequest.builder()
                 .expiresInSeconds(300)
-                .projectArn(getProperties().get("project_arn"))
+                .projectArn(System.getProperty("AWS_PROJECT_ARN"))
                 .build();
 
         try {

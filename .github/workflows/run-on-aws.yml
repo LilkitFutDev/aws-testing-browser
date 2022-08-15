@@ -26,6 +26,6 @@ jobs:
     - name: Run
       uses: LilkitFutDev/aws-testing-browser/src/test/java/com/browser/test@master
       with:
-         project_arn: arn:aws:devicefarm:us-west-2:673835602006:testgrid-project:7fe3948c-5c32-4006-a75f-2577f4a89a3e
+         inputs.project_arn: arn:aws:devicefarm:us-west-2:673835602006:testgrid-project:7fe3948c-5c32-4006-a75f-2577f4a89a3e
       
         
