@@ -55,7 +55,7 @@ public class AwsBrowserTest {
         DeviceFarmClient client = DeviceFarmClient.builder().region(Region.US_WEST_2).build();
         CreateTestGridUrlRequest request = CreateTestGridUrlRequest.builder()
                 .expiresInSeconds(300)
-                .projectArn(System.getProperty("AWS_PROJECT_ARN"))
+                .projectArn(getProperties().get("project_arn"))
                 .build();
 
         try {
