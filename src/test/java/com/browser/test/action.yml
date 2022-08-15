@@ -5,14 +5,7 @@ inputs:
     description: 'x'
     required: true
     default: '1'
-  aws_access_key:
-    description: 'x'
-    required: true
-    default: '1'
-  aws_secret_access_key:
-    description: 'x'
-    required: true
-    default: '1'
+
 outputs:
     data:
       value: aws_access_key

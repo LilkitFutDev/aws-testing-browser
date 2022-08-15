@@ -21,6 +21,7 @@ import software.amazon.awssdk.services.devicefarm.model.CreateTestGridUrlRespons
 import software.amazon.awssdk.arns.ArnResource.DefaultBuilder;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.net.URL;
 import java.time.Duration;
@@ -39,6 +40,10 @@ public class AwsBrowserTest {
     DesiredCapabilities desired_capabilities = new DesiredCapabilities();
 
     Map<String, String> data = new HashMap<String, String>();
+    InputStream inputStream = new FileInputStream(new File("src\\test\\java\\com\\browser\\test\\action.yml"));
+
+    public AwsBrowserTest() throws FileNotFoundException {
+    }
 
 
     @BeforeTest
@@ -46,15 +51,12 @@ public class AwsBrowserTest {
     public void setUp(String browser) throws Exception {
         URL testGridUrl = null;
 
-//        System.setProperty("aws.accessKeyId", getProperties().get("aws_access_key"));
-//        System.setProperty("aws.secretAccessKey", getProperties().get("aws_secret_access_key"));
-
         System.out.println(getProperties().get("project_arn"));
 
         DeviceFarmClient client = DeviceFarmClient.builder().region(Region.US_WEST_2).build();
         CreateTestGridUrlRequest request = CreateTestGridUrlRequest.builder()
                 .expiresInSeconds(300)
-                .projectArn("arn:aws:devicefarm:us-west-2:673835602006:testgrid-project:7fe3948c-5c32-4006-a75f-2577f4a89a3e")
+                .projectArn(getProperties().get("project_arn"))
                 .build();
 
         try {
@@ -88,7 +90,7 @@ public class AwsBrowserTest {
 
     private Map<String, String> getProperties() throws Exception {
 
-        InputStream inputStream = new FileInputStream(new File("src\\test\\java\\com\\browser\\test\\action.yml"));
+
 
         Yaml yaml = new Yaml();
         data = yaml.load(inputStream);
