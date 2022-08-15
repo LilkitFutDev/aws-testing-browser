@@ -89,6 +89,8 @@ public class AwsBrowserTest {
 
         Yaml yaml = new Yaml();
         data = yaml.load(inputStream);
+
+
         return data;
 
     }
